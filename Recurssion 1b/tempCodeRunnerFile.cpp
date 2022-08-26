@@ -1,0 +1,1 @@
+int** arr1=(int**) malloc(count * sizeof(int*));
