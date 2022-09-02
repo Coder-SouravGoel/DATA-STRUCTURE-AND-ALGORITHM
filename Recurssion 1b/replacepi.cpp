@@ -1,43 +1,39 @@
-#include<iostream>
-#include<string.h>
+#include <iostream>
+#include <string.h>
 using namespace std;
 
-string pi_func(string s, int size){
+void pi_func(char *s)
+{
 
-    if (size == 0)
+    if (s[0] == '\0')
     {
-        return " ";
+        return;
     }
 
-    else if (s[0] == 'p' && s[1] == 'i'){
-        int k=size;
-        for(int i=0; i<size; i++){
-            s[k] = s[i];
-            k++;
-        }
-
-        s[size+5] = '\0';
+    if (s[0] == 'p' && s[1] == 'i')
+    {
         s[0] = '3';
         s[1] = '.';
+        for (int i = strlen(s); i > 1; i--)
+        {
+            s[i + 2] = s[i];
+            printf("THE VALUE OF S[i] :- %c\n", s[i]);
+            printf("THE VALUE OF STRLEN :- %d\n", strlen(s));
+        }
         s[2] = '1';
         s[3] = '4';
-
-        return s + pi_func(s, size-1);
     }
-    else{
-
-        return s[0] + pi_func(s, size-1);
-    }
-     
+    return pi_func(s + 1);
 }
 
 int main()
 {
-    string s;
-    cin>>s;
+    char s[100];
+    cin.getline(s, 100);
 
-    int lenght = s.length();    
+    // cout<<s;
 
-    cout<<pi_func(s, lenght);
+    pi_func(s);
+    cout << s;
     return 0;
 }

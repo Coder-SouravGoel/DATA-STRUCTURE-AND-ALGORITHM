@@ -1,1 +1,2 @@
-int** arr1=(int**) malloc(count * sizeof(int*));
+
+        *ans = *ans + (pow(strlen(s),10) * ((int)s[0] - 48));
