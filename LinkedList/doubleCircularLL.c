@@ -1,19 +1,3 @@
-/* int detectLoop() {
-struct Node *slowp = head,
-*fastp = head;
-if (head == NULL || head->next == NULL) {
-printf(\nEmpty list or list contains one node...");
-return 0;
-}
-while (slowp && fastp && fastp->next) {
-slowp = slowp->next;
-fastp = fastp->next->next;
-if (slowp == fastp)
-return 1;
-}
-return 0;
-} */
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -22,6 +6,7 @@ struct node
 
     int data;
     struct node *next;
+    struct node *prev;
 };
 int main()
 {
@@ -40,13 +25,15 @@ int main()
 
             head = (struct node *)malloc(sizeof(struct node));
             current = head;
+            head->prev = NULL;
         }
 
         else
         {
 
             current->next = (struct node *)malloc(sizeof(struct node));
-            current = current->next;
+            current->next->prev = current;
+            current = current -> next;
         }
 
         printf("ENTER THE DATA IN THE NODE :- ");
@@ -56,25 +43,26 @@ int main()
     current->next = head;
     temp = head;
 
-/*     while (slowp && fastp && fastp -> next)
-    {
-        slowp = slowp ->next;
-        fastp = fastp -> next -> next;
+    /*     while (slowp && fastp && fastp -> next)
+        {
+            slowp = slowp ->next;
+            fastp = fastp -> next -> next;
 
-        if (slowp == fastp){
+            if (slowp == fastp){
 
-            temp = slowp;
+                temp = slowp;
 
+            }
         }
-    }
 
-    printf("THE DATA :- %d\n", temp -> data); */
+        printf("THE DATA :- %d\n", temp -> data); */
 
-    do{
+    do
+    {
 
-        printf("%d\n", temp -> data);
-        temp = temp -> next;
-    }while(temp != head);
+        printf("%d\n", temp->data);
+        temp = temp->next;
+    } while (temp != head);
 
     return 0;
 }

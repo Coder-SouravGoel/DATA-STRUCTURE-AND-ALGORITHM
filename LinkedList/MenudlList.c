@@ -180,6 +180,7 @@ int main()
         display(&head);
         break;
     default:
+        exit(0);
         break;
     }
 
